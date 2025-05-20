@@ -1,2 +1,9 @@
 # SVG-Files
-Course project for OOP.
+
+Курсов проект по ООП на тема "SVG файлове".
+
+
+
+## Used code from:
+
+(soon)
