@@ -18,9 +18,9 @@ bool operator==(const Color &other) const{
 const Color red = {255,0,0},
             green = {0,255,0},
             blue = {0,0,255},
-            yellow = {255,255,0}, // not working
+            yellow = {255,255,0}, 
             white = {255,255,255},
-            purple = {128,0,128}, // not working
+            purple = {128,0,128},
             black = {0,0,0};
 
 class Figure{
