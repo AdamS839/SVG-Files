@@ -11,6 +11,9 @@ public:
     Circle(const Point&, double, const Color&);
 
     void print(std::ostream &) const override;
+    
+    void parseFromTokens(const std::vector<std::string> &) override;
+
     void translate(double, double) override;
 
     bool within(const Figure&) const override;
@@ -18,7 +21,7 @@ public:
 
     std::string getType() const override;
 
-    virtual Figure *clone() const override;
+    Figure *clone() const override;
 
     void setColor(const Color&);
 };

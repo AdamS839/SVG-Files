@@ -1,9 +1,10 @@
 #include "../includes/Rect.hpp"
+#include "../includes/ColorHelper.hpp"
+#include <stdexcept>
 
 Rect::Rect() : start_point({0,0}), width(0), height(0), Figure(black) {}
 Rect::Rect(const Point &p, double _width, double _height,const Color &_color) : Figure(_color), width(_width), height(_height), start_point(p) {}
 
-// rect is within the point
 bool Rect::containsPoint(const Point& p) const {
     return p.x >= start_point.x &&
            p.y >= start_point.y &&
@@ -30,7 +31,7 @@ Figure* Rect::clone() const{
 void Rect::print(std::ostream &os) const{
     os << "<rect x=\"" << start_point.x
        << "\" y=\"" << start_point.y
-       << "\" width=\"m" << width
+       << "\" width=\"" << width
        << "\" height=\"" << height
        << "\" fill=\"" << colorToString(color) << "\"/>\n";
 }
@@ -42,4 +43,8 @@ void Rect::translate(double horizontal, double vertical) {
 
 std::string Rect::getType() const{
     return "rect";
+}
+
+void Rect::parseFromTokens(const std::vector<std::string> &tokens) {
+
 }

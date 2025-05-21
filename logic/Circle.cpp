@@ -1,9 +1,10 @@
 #include "../includes/Circle.hpp"
+#include "../includes/ColorHelper.hpp"
 
 Circle::Circle() : center({0,0}), radius(0), Figure(black) {}
 Circle::Circle(const Point &p, double _radius, const Color &_color) : Figure(_color), radius(_radius), center(p) {}
 
-// circle uravn.
+// уравнения на окръжност
 bool Circle::containsPoint(const Point& p) const {
     double dx = p.x - center.x;
     double dy = p.y - center.y;
@@ -44,4 +45,8 @@ void Circle::setColor(const Color &color){
 
 std::string Circle::getType() const{
     return "circle";
+}
+
+void Circle::parseFromTokens(const std::vector<std::string> &tokens) {
+
 }

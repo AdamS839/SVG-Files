@@ -1,9 +1,11 @@
 #include "../includes/Ellipse.hpp"
+#include "../includes/ColorHelper.hpp"
+#include <stdexcept>
 
 Ellipse::Ellipse() : center({0,0}), radiusX(0), radiusY(0), Figure(black) {}
 Ellipse::Ellipse(const Point &p, double _radiusX, double _radiusY, const Color &_color) : Figure(_color), radiusX(_radiusX), radiusY(_radiusY), center(p) {}
 
-// ellipse uravn.
+// уравнения на елипса
 bool Ellipse::containsPoint(const Point& p) const {
     double dx = (p.x - center.x) / radiusX;
     double dy = (p.y - center.y) / radiusY;
@@ -45,4 +47,8 @@ void Ellipse::setColor(const Color &color){
 
 std::string Ellipse::getType() const{
     return "ellipse";
+}
+
+void Ellipse::parseFromTokens(const std::vector<std::string> &tokens) {
+    
 }

@@ -13,12 +13,14 @@ public:
     void print(std::ostream &) const override;
     void translate(double, double) override;
     
+    void parseFromTokens(const std::vector<std::string> &) override;
+    
     bool within(const Figure&) const override;
     bool containsPoint(const Point&) const override;
 
     std::string getType() const override;
 
-    virtual Figure *clone() const override;
+    Figure *clone() const override;
 };
 
 
