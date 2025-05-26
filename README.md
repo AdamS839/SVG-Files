@@ -6,4 +6,4 @@
 
 ## Used code from:
 
-(soon)
+Will add used cpp literature after documentation is done
