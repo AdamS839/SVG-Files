@@ -12,6 +12,7 @@ public:
     Rect(const Point&, double, double,const Color&);
 
     // Overridden methods from Figure class, with logic specific for Rectangle
+    // Methods explained in Figure.hpp
 
     void print(std::ostream &) const override;
     void printToTerminalWithColors(std::ostream &) const override;

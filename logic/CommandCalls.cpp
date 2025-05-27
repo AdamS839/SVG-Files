@@ -15,13 +15,16 @@ void withinCommandCall(const Figure &fig, const std::vector<Figure*> &figures){
     // for(const Figure *f : figures){
     //     if(f->within(fig)) f->print(std::cout);
     // }
+    bool isfound = false;
     for (std::size_t i = 0; i < figures.size(); ++i){
-
-        // is figure[i] within fig?
         if(figures[i]->within(fig)){
             std::cout << i + 1 << ". ";
-            figures[i]->print(std::cout);
+            figures[i]->printToTerminalWithColors(std::cout);
+            isfound = true;
         }
+    }
+    if(!isfound){
+        std::cout << "No figures within the given figure with type: "<< fig.getType() << std::endl;
     }
 }
 

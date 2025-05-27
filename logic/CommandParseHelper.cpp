@@ -46,8 +46,9 @@ std::string firstWordIsCommand(const std::string &line){
 
 // return everything after the command in the line input
 std::string getRestOfLine(const std::string& line, const std::string& command) {
-    if (line.length() > command.length())
+    if (line.length() > command.length()){
         return line.substr(command.length() + 1);
+    }
     return "";
 }
 

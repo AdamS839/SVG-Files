@@ -12,6 +12,7 @@ public:
     Ellipse(const Point&, double, double, const Color&);
 
     // Overridden methods from Figure class, with logic specific for Ellipse
+    // Methods explained in Figure.hpp
 
     void translate(double, double) override;
     void parseFromTokens(const std::vector<std::string> &) override;

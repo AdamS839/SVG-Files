@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <iostream>
 
+// File for helping functions for parsing and other useful functions i can use to save space
+
 // replace commas with dots in the string to be able to use std::stod correctly (example: 1,23 -> 1.23)
 std::string stodCorrect(std::string line);
 

@@ -19,8 +19,11 @@ class Figure{
 protected:
     Color color;
 public:
+    //Constructors
     Figure();
     Figure(Color);
+
+    // All methods in virtual are written in Rect.hpp/.cpp, Circle.hpp/.cpp & Ellipse.hpp/.cpp with logic for their figure type 
 
     // sets parameters from a vector of tokens(a string) for their own type of figure
     virtual void parseFromTokens(const std::vector<std::string> &) = 0;

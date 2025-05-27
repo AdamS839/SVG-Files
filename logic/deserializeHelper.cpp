@@ -4,28 +4,32 @@
 double dataDoubleAttribute(std::istream &in, const std::string &attr){
     std::string token;
     while (in >> token){
+        // look for the position of the attribure + =" so we can get the position to the value
         std::size_t pos = token.find(attr + "=\"");
         if (pos != std::string::npos) {
-            pos += attr.length() + 2; // skip the attr and the opening quote
-            std::size_t end = token.find('"', pos);
+            pos += attr.length() + 2; // skip the attr and the first "
+            std::size_t end = token.find('"', pos); // go to the next " as the value is inside it (example: x="123", value = 123)
+
+            // check if end pos exists
             if (end != std::string::npos) {
-                try{
+                try{ // also use exception handle
                     return std::stod(token.substr(pos, end - pos));
                 }
                 catch(const std::exception& e){
                     std::cerr << "Couldnt convert value to double here: " << e.what() << std::endl;
                 }
             }
-        }
+        } // stop if we find the end
         if (token.find('>') != std::string::npos || token.find("/>") != std::string::npos) {
             break;
         }
-    }
+    } 
+    // return 0 else nothing is found
     return 0.0;
 }
 
 
-// same function as above but for parsing the color parameter (example: attr=red -> pos = find(red+="))
+// same function as above but for parsing the color parameter (example: attr=red -> pos = find(red="))
 std::string ColorAttribute(std::istream &in, const std::string& attr) {
     std::string token;
     while (in >> token){
@@ -44,7 +48,7 @@ std::string ColorAttribute(std::istream &in, const std::string& attr) {
     return "black";
 }
 
-// WORKS OMG
+// WORKS OMG, after 3 tries
 // function to get the type of the figure from the line (exmple: <circle /<ellipse /<rect )
 std::string getTypeOfFigure(std::istream &in) {
     std::string token;
@@ -58,5 +62,6 @@ std::string getTypeOfFigure(std::istream &in) {
             return token.substr(1, endPos - 1);
         }
     }
+    //return empty word
     return "";
 }

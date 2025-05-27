@@ -12,6 +12,7 @@ public:
     Circle(const Point&, double, const Color&);
 
     // Overridden methods from Figure class, with logic specific for Circle
+    // Methods explained in Figure.hpp
 
     void print(std::ostream &) const override;
 
