@@ -35,7 +35,7 @@ Figure* Figure::deserializeAll(std::istream &in){
     std::string type = getTypeOfFigure(lineStream);
 
     if(type.empty()){
-        throw std::runtime_error("Failed to get type of figure from line: " + line + " curr type is: " + type);
+        throw std::runtime_error("Failed to get type of figure from line: " + line);
     }
 
     Figure *fig = factory(type);
