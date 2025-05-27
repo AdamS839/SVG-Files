@@ -7,10 +7,15 @@ protected:
 Point start_point;
 double width, height;
 public:
+    //Constructors
     Rect();
     Rect(const Point&, double, double,const Color&);
 
+    // Overridden methods from Figure class, with logic specific for Rectangle
+
     void print(std::ostream &) const override;
+    void printToTerminalWithColors(std::ostream &) const override;
+
     void translate(double, double) override;
     
     void parseFromTokens(const std::vector<std::string> &) override;
@@ -20,7 +25,9 @@ public:
 
     std::string getType() const override;
 
-    Figure *clone() const override;
+    virtual Figure *clone() const override;
+
+    void deserialize(std::istream &) override;
 };
 
 

@@ -7,10 +7,12 @@ protected:
     Point center;
     double radiusX, radiusY;
 public:
+    // Constructors
     Ellipse();
     Ellipse(const Point&, double, double, const Color&);
 
-    void print(std::ostream &) const override;
+    // Overridden methods from Figure class, with logic specific for Ellipse
+
     void translate(double, double) override;
     void parseFromTokens(const std::vector<std::string> &) override;
 
@@ -19,9 +21,14 @@ public:
 
     std::string getType() const override;
 
-    Figure *clone() const override;
+    virtual Figure *clone() const override;
 
     void setColor(const Color&);
+
+    void deserialize(std::istream &) override;
+
+    void print(std::ostream &) const override;
+    void printToTerminalWithColors(std::ostream &) const override;
 };
 
 

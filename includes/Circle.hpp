@@ -7,10 +7,15 @@ protected:
 Point center;
 double radius;
 public:
+    // Constructors
     Circle();
     Circle(const Point&, double, const Color&);
 
+    // Overridden methods from Figure class, with logic specific for Circle
+
     void print(std::ostream &) const override;
+
+    void printToTerminalWithColors(std::ostream &) const override;
     
     void parseFromTokens(const std::vector<std::string> &) override;
 
@@ -21,9 +26,11 @@ public:
 
     std::string getType() const override;
 
-    Figure *clone() const override;
+    virtual Figure *clone() const override;
 
     void setColor(const Color&);
+
+    void deserialize(std::istream &) override;
 };
 
 

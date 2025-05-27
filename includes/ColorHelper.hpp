@@ -3,7 +3,7 @@
 #include <string>
 
 struct Color{
-    unsigned int r,g,b;
+unsigned int r,g,b;
 
 bool operator==(const Color &other) const{
     return r == other.r && g == other.g && b == other.b;
@@ -12,6 +12,7 @@ bool operator==(const Color &other) const{
 
 const Color red = {255,0,0},
             green = {0,255,0},
+            light_green = {144,238,144},
             blue = {0,0,255},
             yellow = {255,255,0},
             white = {255,255,255},
@@ -22,6 +23,9 @@ Color stringToColor(const std::string &);
 
 std::string colorToStringAnsi(const Color&);
 
-std::string colorToString(const Color &col);
+std::string colorToString(const Color &);
+
+std::string valueColorAnsi(const Color &);
+std::string defaultAnsiCol();
 
 #endif
