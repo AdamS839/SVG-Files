@@ -7,12 +7,14 @@
 #include <vector>
 #include <string>
 
+// Command Pattern for each method in Manager.hpp
+// use the same manager for using the same vector, string for arguments
 class ManagerCommand : public Command {
 protected:
-    Manager &manager;
-    std::string args;
-
+Manager &manager;
+std::string args;
 public:
+    virtual ~ManagerCommand() = default;
     ManagerCommand(Manager &, const std::string &);
     virtual void execute() = 0;
 };
@@ -35,6 +37,7 @@ public:
     void execute() override;
 };
 
+// within needs a figure to see if it contains the other figures
 class WithinCommand : public ManagerCommand {
 Figure *fig;
 public:
