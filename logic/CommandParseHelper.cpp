@@ -16,10 +16,6 @@ bool saveasFilenameCriteria(const std::string &filename, std::string &errorMessa
         errorMessage = "Filename cant contain spaces";
         return false;        
     }
-    else if(filename.find('/') != std::string::npos || filename.find('\\') != std::string::npos){
-        errorMessage = "Filename cant contain slashes";
-        return false;
-    }
     else if(filename.find('.') == std::string::npos) {
         errorMessage = "Filename must contain an extension";
         return false;
@@ -46,24 +42,19 @@ std::string firstWordIsCommand(const std::string &line){
 
 // return everything after the command in the line input
 std::string getRestOfLine(const std::string& line, const std::string& command) {
-    if (line.length() > command.length()){
+    if (line.length() > command.length())
         return line.substr(command.length() + 1);
-    }
     return "";
 }
 
-// helping function for little description about other operations (will add more info about creat/within/erase/translate)
-int help(){
-    std::cout << "open <file>                                              - Opens SVG file or create a new one" << std::endl;
-    std::cout << "close                                                    - Closes the current file" << std::endl;
-    std::cout << "save                                                     - Save changes to the current file" << std::endl;
-    std::cout << "saveas <newfilename>                                     - Save changes to a new file" << std::endl;
-    std::cout << "print                                                    - Prints all figures" << std::endl;
-    std::cout << "create [figure(params)]                                  - Creates a new new figure from the parameters given after the command" << std::endl;
-    std::cout << "erase <index>                                            - Erases a figure with given index" << std::endl;
-    std::cout << "translate [vertical=] [horizontal=] (optional)[id=]      - Translates figures(1 figure if given index/all figures if not given index)" <<std::endl;
-    std::cout << "within [figure(params)]                                  - Prints figures that are inside another figure" << std::endl;
-    std::cout << "help                                                     - Shows this list of commands" << std::endl;
-    std::cout << "exit                                                     - Exists the program" << std::endl;
-    return 0;
+
+std::vector<std::string> splitTokens(const std::string& line){
+    std::vector<std::string> tokens;
+    std::size_t pos = 0, next_pos;
+    while ((next_pos = line.find(' ', pos)) != std::string::npos) {
+        if (next_pos > pos) tokens.push_back(line.substr(pos, next_pos - pos));
+        pos = next_pos + 1;
+    }
+    if (pos < line.length()) tokens.push_back(line.substr(pos));
+    return tokens;
 }
