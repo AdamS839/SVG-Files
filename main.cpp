@@ -22,7 +22,17 @@ int main() {
         std::string restline = getRestOfLine(line, command);
 
         // implement map for execute()
-        
+        auto commandFactory = createCommandFactory(manager);
+        auto it = commandFactory.find(command);
+        if (it != commandFactory.end()) {
+            Command* cmd = it->second(restline, manager.getFigures());
+            if (cmd) {
+                cmd->execute();
+                delete cmd;
+            }
+        } else {
+            std::cerr << "Unknown command: \"" << command << "\"\n";
+        }
 
     }
 
