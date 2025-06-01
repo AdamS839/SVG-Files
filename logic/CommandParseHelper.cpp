@@ -12,10 +12,6 @@ bool saveasFilenameCriteria(const std::string &filename, std::string &errorMessa
         errorMessage = "Filename cant be empty";
         return false;
     }
-    // else if(filename.find(' ') != std::string::npos){
-    //     errorMessage = "Filename cant contain spaces";
-    //     return false;        
-    // }
     else if(filename.rfind('.') == std::string::npos) {
         errorMessage = "Filename must contain an extension";
         return false;
