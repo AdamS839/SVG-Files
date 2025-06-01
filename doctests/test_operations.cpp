@@ -65,6 +65,38 @@ TEST_CASE("test operations - manipulating operations") {
         CHECK(result.find("<circle") == std::string::npos); // should not be here
     }
 
+    SUBCASE("Clone a figure") {
+        Figure* original = manager.getFigures()[0]; // get rectangle
+        Figure* copy = nullptr;
+        if(original != nullptr){
+            copy = original->clone();
+        }
+        CHECK(copy != nullptr);
+        CHECK(typeid(*copy) == typeid(*original)); // check for same type
+
+        //print out both figures to compare
+        std::ostringstream origOut, copyOut;
+        original->print(origOut);
+        copy->print(copyOut);
+        CHECK(origOut.str() == copyOut.str()); // same info
+
+        delete copy; //delete the copy
+    }
+
+
+    // set color of a figure
+    SUBCASE("Set color of a figure") {
+        Figure* fig = manager.getFigures()[0]; // get rectangle
+        fig->setColor(stringToColor("black"));
+
+        std::ostringstream out;
+        fig->print(out);
+        std::string result = out.str();
+
+        CHECK(result.find("fill=\"black\"") != std::string::npos);
+    }
+
+
     // Clean up memory
     for (Figure* fig : manager.getFigures()){
         delete fig;

@@ -9,7 +9,7 @@ Figure::Figure() : color(black) {}
 Figure::Figure(Color _color) : color(_color) {}
 
 
-// set color to figure (dont need) - will remove
+// set color to figure
 void Figure::setColor(const Color &_color){
     this->color = _color;
 }
