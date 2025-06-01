@@ -14,8 +14,8 @@
 6. The Cherno. ["C++ Tutorial: Using std::map." *YouTube*](https://www.youtube.com/watch?v=KiB0vRi2wlc&t=1361s) – 15 Dec. 2019  
 7. ["istringstream." *cplusplus.com*](https://cplusplus.com/reference/sstream/istringstream/)
 8. ["Istringstream: How to Do This." *Stack Overflow*](https://stackoverflow.com/questions/2323929/istringstream-how-to-do-this)  
-9. [*SVG Viewer Dev*](https://www.svgviewer.dev/)
 10. ["Command Pattern in C++." *GeeksforGeeks*](https://www.geeksforgeeks.org/command-pattern-c-design-patterns/)
+9. [*SVG Viewer Dev*](https://www.svgviewer.dev/) - Viewer for checking files
 
 Тестове бяха проверени за грешки от ChatGPT. \
 Документацията беше проверена за правописни грешки от ChatGPT.
