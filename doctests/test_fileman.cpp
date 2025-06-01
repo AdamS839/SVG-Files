@@ -3,7 +3,7 @@
 #include "../includes/Manager.hpp"
 #include <fstream>
 
-//compile with: g++ test/test_fileman.cpp ./login/*.cpp
+//compile with: g++ doctests/test_fileman.cpp ./login/*.cpp
 
 TEST_CASE("FileManager open, close, save and saveAs") {
     Manager m;

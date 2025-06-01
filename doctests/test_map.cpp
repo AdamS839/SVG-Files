@@ -4,7 +4,7 @@
 #include "../includes/MapOperations.hpp"
 #include <functional>
 
-//compile with: g++ test/test_map.cpp ./login/*.cpp
+//compile with: g++ doctests/test_map.cpp ./login/*.cpp
 
 TEST_CASE("createCommandFactory returns correct commands") {
     Manager manager;

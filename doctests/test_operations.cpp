@@ -5,7 +5,7 @@
 #include "../includes/Ellipse.hpp"
 #include "../includes/Manager.hpp"
 
-//compile with: g++ test/test_operations.cpp ./login/*.cpp
+//compile with: g++ doctests/test_operations.cpp ./login/*.cpp
 
 TEST_CASE("test operations - manipulating operations") {
     Manager manager;

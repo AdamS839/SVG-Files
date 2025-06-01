@@ -6,7 +6,7 @@
 #include "../includes/Ellipse.hpp"
 #include <sstream> // for istringstream
 
-//compile with: g++ test/test_helper.cpp ./login/*.cpp
+//compile with: g++ doctests/test_helper.cpp ./login/*.cpp
 
 
 // Use istringstream to wrap the string as istream so we can use it with deserializeAll
