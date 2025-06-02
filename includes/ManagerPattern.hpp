@@ -2,7 +2,7 @@
 #define __ManagerPattern_HPP
 
 #include "Manager.hpp"
-#include "BasePatternCom.hpp"
+#include "BasePatternCommand.hpp"
 #include "CommandParseHelper.hpp"
 #include <vector>
 #include <string>
@@ -41,6 +41,7 @@ public:
 class WithinCommand : public ManagerCommand {
 Figure *fig;
 public:
+    // added destructor to delete the figure we created
     virtual ~WithinCommand();
     WithinCommand(Manager &, const std::string &);
     void execute() override;

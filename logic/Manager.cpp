@@ -9,9 +9,16 @@
 
 Manager::Manager() : isFileOpen(false) {}
 
+// clear the vector of figures and reuse this function in destructor and close method
+void Manager::clearVector(std::vector<Figure*> &figures){
+    for(Figure *fig : figures){
+        delete fig;
+    }
+}
+
 // destructor with closing the file
 Manager::~Manager() {
-    close(true);
+    clearVector(figures);
 }
 
 // opening the file, if it exists, read the figures and store the data in vector of figures
@@ -78,9 +85,8 @@ void Manager::close(bool outputMessage){
         }
         return;
     }
-    for (Figure *fig : figures){
-        delete fig;
-    }
+    // delete all figures before closing
+    clearVector(figures);
     figures.clear();
     if(!outputMessage){
         std::cout << "Successfully closed: " << currentFilename << std::endl;
@@ -100,6 +106,7 @@ bool Manager::save() const{
         std::cout << "Failed to save to file: " << currentFilename << std::endl;
         return false;
     }
+    // add the xml header and doctype for svg
     out << "<?xml version=\"1.0\" standalone=\"no\"?>\n";
     out << "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n";
     out << "  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
@@ -108,6 +115,7 @@ bool Manager::save() const{
         fig->print(out);
     }
     out << "</svg>\n";
+
     std::cout << "Successfully saved changes to " << currentFilename << std::endl;
     return true;
 }
@@ -233,12 +241,12 @@ bool Manager::translateFigures(const std::string& command) {
         int index = -1;
 
         // Parse vertical
-        size_t vertPos = command.find("vertical=");
+        std::size_t vertPos = command.find("vertical=");
         if (vertPos == std::string::npos) {
             throw std::invalid_argument("Missing vertical/horizontal keywords");
         }
         vertPos += 9; // skip word "vertical" and "="
-        size_t vertEnd = command.find(' ', vertPos);
+        std::size_t vertEnd = command.find(' ', vertPos);
 
         // convert the string to double, using stodCorrect to replace commas with dots (example in deserializeHelper.hpp)
         vertical = std::stod(stodCorrect(command.substr(vertPos, vertEnd - vertPos)));
@@ -247,19 +255,19 @@ bool Manager::translateFigures(const std::string& command) {
         // the same for horizontal
 
         // Parse horizontal
-        size_t horizPos = command.find("horizontal=");
+        std::size_t horizPos = command.find("horizontal=");
         if (horizPos == std::string::npos) {
             throw std::invalid_argument("Missing vertical/horizontal keywords");
         }
         horizPos += 11; // length of "horizontal="
-        size_t horizEnd = command.find(' ', horizPos);
+        std::size_t horizEnd = command.find(' ', horizPos);
         horizontal = std::stod(stodCorrect(command.substr(horizPos, horizEnd - horizPos)));
 
         // Parse optional index
-        size_t indexPos = command.find("id=");
+        std::size_t indexPos = command.find("id=");
         if (indexPos != std::string::npos) {
             indexPos += 3; // length of "id="
-            size_t indexEnd = command.find(' ', indexPos);
+            std::size_t indexEnd = command.find(' ', indexPos);
             index = std::stoi(command.substr(indexPos, indexEnd - indexPos)) - 1;
             if (index < 0 || index >= figures.size()) {
                 std::cout << figures.size() << std::endl;

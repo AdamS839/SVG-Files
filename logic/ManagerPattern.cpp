@@ -75,12 +75,7 @@ void OpenCommand::execute() {
 SaveCommand::SaveCommand(Manager &manager, const std::string &args) : ManagerCommand(manager, args) {}
 
 void SaveCommand::execute() {
-    if(!args.empty()){
-        std::cerr << "Save command cant take arguments" << std::endl;
-    }
-    else{
-        manager.save();
-    }
+    manager.save();
 }
 
 // SaveAsCommand
@@ -100,20 +95,13 @@ void SaveAsCommand::execute() {
 CloseCommand::CloseCommand(Manager &manager, const std::string &args) : ManagerCommand(manager, args) {}
 
 void CloseCommand::execute() {
-    if(!args.empty()){
-        std::cerr << "Do not input other symbols after command 'close'" << std::endl;
-    }
-    else manager.close(false);
+    manager.close(false);
 }
 
 // ExitCommand
 ExitCommand::ExitCommand(Manager &manager, const std::string &args) : ManagerCommand(manager, args) {}
 
 void ExitCommand::execute() {
-    if(!args.empty()){
-        std::cerr << "Do not input anything other than keyword 'exit' to exit the program" << std::endl;
-        return;
-    }
     std::cout << "Exiting the program..." << std::endl;
     manager.close(true);
     std::exit(0);
@@ -123,10 +111,5 @@ void ExitCommand::execute() {
 HelpCommand::HelpCommand(Manager &manager, const std::string &args) : ManagerCommand(manager, args) {}
 
 void HelpCommand::execute() {
-    if(!args.empty()){
-        std::cerr << "Do not input other symbols after command 'help'" << std::endl;
-    }
-    else{
-        manager.help();
-    }
+    manager.help();
 }

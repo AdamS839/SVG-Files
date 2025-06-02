@@ -59,6 +59,8 @@ public:
     std::vector<Figure*> &getFigures();
     
     const std::vector<Figure*> &getFigures() const;
+
+    void clearVector(std::vector<Figure*> &);
 };
 
 #endif

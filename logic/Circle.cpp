@@ -9,7 +9,8 @@
 Circle::Circle() : center({0,0}), radius(0), Figure(black) {}
 Circle::Circle(const Point &p, double _radius, const Color &_color) : Figure(_color), radius(_radius), center(p) {}
 
-// equation of a circle (< - for within the circle, = - on the circle border)
+// equation of a circle
+// (x0 - center.x)^2 + (y0 - center.y)^2 <= radius^2
 bool Circle::containsPoint(const Point& p) const {
     double dx = p.x - center.x;
     double dy = p.y - center.y;

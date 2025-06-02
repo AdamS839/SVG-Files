@@ -5,7 +5,7 @@
 #include "../includes/Circle.hpp"
 #include "../includes/Ellipse.hpp"
 
-//compile with: g++ doctests/test_factory.cpp ./login/*.cpp
+//compile with: g++ doctests/test_factory.cpp ./logic/*.cpp
 
 // test factory for creating figures
 TEST_CASE("Figure factory creates correct figures") {
