@@ -52,7 +52,7 @@ public:
     // deserialize a figure from a string
     virtual void deserialize(std::istream &) = 0;
 
-    // deserialize all figures from a string from the file
+    // deserialize all figures from a string from the file, is static so it can be called without knowing the type of the figure
     static Figure* deserializeAll(std::istream &);
 
     // print is serialization function - for printFigures we call std::cout, and for saving to the file we call std::ofstream
