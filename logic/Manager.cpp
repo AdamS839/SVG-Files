@@ -243,21 +243,19 @@ bool Manager::translateFigures(const std::string& command) {
         // Parse vertical
         std::size_t vertPos = command.find("vertical=");
         if (vertPos == std::string::npos) {
-            throw std::invalid_argument("Missing vertical/horizontal keywords");
+            throw std::invalid_argument("Missing vertical keyword");
         }
         vertPos += 9; // skip word "vertical" and "="
         std::size_t vertEnd = command.find(' ', vertPos);
-
         // convert the string to double, using stodCorrect to replace commas with dots (example in deserializeHelper.hpp)
         vertical = std::stod(stodCorrect(command.substr(vertPos, vertEnd - vertPos)));
-
 
         // the same for horizontal
 
         // Parse horizontal
         std::size_t horizPos = command.find("horizontal=");
         if (horizPos == std::string::npos) {
-            throw std::invalid_argument("Missing vertical/horizontal keywords");
+            throw std::invalid_argument("Missing horizontal keyword");
         }
         horizPos += 11; // length of "horizontal="
         std::size_t horizEnd = command.find(' ', horizPos);
@@ -270,9 +268,6 @@ bool Manager::translateFigures(const std::string& command) {
             std::size_t indexEnd = command.find(' ', indexPos);
             index = std::stoi(command.substr(indexPos, indexEnd - indexPos)) - 1;
             if (index < 0 || index >= figures.size()) {
-                std::cout << figures.size() << std::endl;
-                std::cout << index << std::endl;
-
                 std::cerr << "Invalid figure index.\n";
                 return false;
             }
@@ -287,12 +282,12 @@ bool Manager::translateFigures(const std::string& command) {
             std::cout << "Translated figure " << (index + 1) << "\n";
         }
         return true;
-    } catch (const std::exception& e) {
+    } 
+    catch (const std::exception& e) {
         std::cerr << "Couldn't apply translate: " << e.what() << "\n";
         return false;
     }
 }
-
 
 // print all figures using serialization function with cout
 void Manager::printFigures(){
