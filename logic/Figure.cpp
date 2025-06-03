@@ -20,7 +20,6 @@ Figure *factory(const std::string &type){
     else if (type == "circle") return new Circle();
     else if (type == "ellipse") return new Ellipse();
     throw std::invalid_argument("Unknown object type: " + type);
-    return nullptr;
 }
 
 
@@ -38,9 +37,21 @@ Figure* Figure::deserializeAll(std::istream &in){
         throw std::runtime_error("Failed to get type of figure from line: " + line);
     }
 
-    Figure *fig = factory(type);
-    if(!fig) throw std::runtime_error("Failed to create figure of type: " + type);
+    Figure *fig = nullptr;
+    try{
+        fig = factory(type);
+    }
+    catch(const std::exception& e){
+        std::cerr << "Factory error occured at: " << e.what() << '\n';
+    }
 
-    fig->deserialize(lineStream);
+    try{        
+        fig->deserialize(lineStream);
+    }
+    catch(const std::exception& e){
+        std::cerr << "Deserialize error occured at: " << e.what() << '\n';
+        delete fig;
+        return nullptr;
+    }
     return fig;
 }

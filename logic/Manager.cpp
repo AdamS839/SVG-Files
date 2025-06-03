@@ -23,13 +23,12 @@ Manager::~Manager() {
 
 // opening the file, if it exists, read the figures and store the data in vector of figures
 bool Manager::open(const std::string &pathname){
-
+    // call the validator for the filename, since we dont want to open invalid files
     std::string error;
     if(!saveasFilenameCriteria(pathname, error)){
         std::cerr << error << std::endl;
         return false;
     }
-
     if(isFileOpen){
         std::cout << "A file is already open. Please close it." << std::endl;
         return false;
