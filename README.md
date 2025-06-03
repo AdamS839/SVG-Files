@@ -4,7 +4,7 @@
 
 
 
-## Used reference:
+## Използвана литература:
 
 1. ["Colorizing Text in the Console with C++." *Stack Overflow*](https://stackoverflow.com/questions/4053837/colorizing-text-in-the-console-with-c)  
 2. ["How to Replace All Occurrences of a Character in String." *Stack Overflow*](https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string)  
@@ -14,8 +14,7 @@
 6. The Cherno. ["C++ Tutorial: Using std::map." *YouTube*](https://www.youtube.com/watch?v=KiB0vRi2wlc&t=1361s) – 15 Dec. 2019  
 7. ["istringstream." *cplusplus.com*](https://cplusplus.com/reference/sstream/istringstream/)
 8. ["Istringstream: How to Do This." *Stack Overflow*](https://stackoverflow.com/questions/2323929/istringstream-how-to-do-this)  
-10. ["Command Pattern in C++." *GeeksforGeeks*](https://www.geeksforgeeks.org/command-pattern-c-design-patterns/)
-9. [*SVG Viewer Dev*](https://www.svgviewer.dev/) - Viewer for checking files
 
-Тестове бяха проверени за грешки от ChatGPT. \
-Документацията беше проверена за правописни грешки от ChatGPT.
+Разглеждане на данните в онлайн viewer: SVG Viewer Dev, https://www.svgviewer.dev/.
+Диаграмата е направена с: LucidChart Diagram, https://www.lucidchart.com/pages.
+Проверка за коректно написани тестове с библиотеката “doctest.h” и граматична проверка на документацията беше извършена от ChatGPT.
